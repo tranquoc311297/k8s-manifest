@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-app
+  namespace: java-app-space
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: java-app
+  template:
+    metadata:
+      labels:
+        app: java-app
+    spec:
+      containers:
+      - name: java-app
+        image: tkquoc/tkquoc-java-app:1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_USERNAME
+          value: "erm"
+        - name: DB_PASSWORD
+          value: "PassWord123@"
+        - name: DB_URL 
+          value: "jdbc:mysql://192.168.1.203:3306/TestingSystem?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
