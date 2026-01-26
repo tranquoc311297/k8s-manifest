@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: java-app
+          image: tkquoc/tkquoc-java-app:9
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_USERNAME
+              value: "erm"
+            - name: DB_PASSWORD
+              value: "PassWord123@"
+            - name: DB_URL
+              value: "jdbc:mysql://192.168.1.203:3306/TestingSystem?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
