@@ -1,2 +1,3 @@
 replicaCount: 3
 domain: stag.tkquoc.local
+version: 10

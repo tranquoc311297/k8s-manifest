@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: java-app
-          image: tkquoc/tkquoc-java-app:10
+          image: tkquoc/tkquoc-java-app:{{ .Values.version }}
           ports:
             - containerPort: 8080
           env:
